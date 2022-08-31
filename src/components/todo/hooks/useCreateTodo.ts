@@ -2,9 +2,11 @@ import { FormEvent } from "react";
 import { TodoContextProps } from "../../../context/useTodoContext";
 import useInput from "../../../hooks/useInput";
 import { fetchCreateTodo } from "../../../services/api/todoAPI";
+import { useModalContext } from "../../../context/useModalContext";
 
 const useCreateTodo = ({ todos, setTodos }: TodoContextProps) => {
   const inputProps = useInput("");
+  const { openModal } = useModalContext();
 
   const handleCreate = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,7 +17,7 @@ const useCreateTodo = ({ todos, setTodos }: TodoContextProps) => {
         inputProps.reset();
       })
       .catch((error) => {
-        console.log(error);
+        openModal("Todo 생성에 실패했습니다.");
       });
   };
 
