@@ -17,7 +17,7 @@ const useAuth = () => {
 
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    fetchLogin({
+    await fetchLogin({
       email: inputEmail.value,
       password: inputPassword.value,
     })
@@ -25,19 +25,24 @@ const useAuth = () => {
         navigate(PATH.TODO);
       })
       .catch((error) => {
-        if (error instanceof AxiosError) {
-          alert(error.response?.data.message);
-          console.log(error);
-        } else {
-          alert("undefined error. check console log");
-          console.log(error);
+        const errorMessage = error.response.data.message;
+        switch (error.response.data.statusCode) {
+          case 404: {
+            return alert(errorMessage);
+          }
+          case 401: {
+            return alert(errorMessage);
+          }
+          default: {
+            return;
+          }
         }
       });
   };
 
   const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    fetchSignUp({
+    await fetchSignUp({
       email: inputEmail.value,
       password: inputPassword.value,
     })
@@ -45,11 +50,17 @@ const useAuth = () => {
         navigate(PATH.TODO);
       })
       .catch((error) => {
-        if (error instanceof AxiosError) {
-          alert(error.response?.data.message);
-        } else {
-          alert("undefined error. check console log");
-          console.log(error);
+        const errorMessage = error.response.data.message;
+        switch (error.response.data.statusCode) {
+          case 400: {
+            return alert(errorMessage);
+          }
+          case 500: {
+            return alert(errorMessage);
+          }
+          default: {
+            return;
+          }
         }
       });
   };

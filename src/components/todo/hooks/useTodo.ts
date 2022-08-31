@@ -14,7 +14,7 @@ const useTodo = ({ todos, setTodos }: TodoContextProps) => {
 
   const handleCreate = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!inputCreateTodo.value) return null;
+    if (!inputCreateTodo.value) return alert("빈 칸을 채워주세요");
     fetchCreateTodo({ todo: inputCreateTodo.value })
       .then((response) => {
         setTodos([...todos, response.data]);
@@ -33,7 +33,8 @@ const useTodo = ({ todos, setTodos }: TodoContextProps) => {
         );
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response.data.statusCode === 400)
+          return alert(error.response.data.message);
       });
   };
 
@@ -47,7 +48,7 @@ const useTodo = ({ todos, setTodos }: TodoContextProps) => {
         setTodos(todos.filter((todo) => todo.id !== id));
       })
       .catch((error) => {
-        console.log(error);
+        alert(error.response.data.message);
       });
   };
   return {
