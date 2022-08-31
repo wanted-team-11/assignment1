@@ -1,5 +1,12 @@
 import { AxiosError } from "axios";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import {
+  FormEvent,
+  useEffect,
+  useRef,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import useInput from "./useInput";
 import PATH from "../router/routerPath";
@@ -15,7 +22,10 @@ const useAuth = () => {
   const inputPassword = useInput("");
   const inputPasswordCheck = useInput("");
 
-  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (
+    e: FormEvent<HTMLFormElement>,
+    setState: Dispatch<SetStateAction<boolean>>
+  ) => {
     e.preventDefault();
     fetchLogin({
       email: inputEmail.value,
@@ -26,7 +36,7 @@ const useAuth = () => {
       })
       .catch((error) => {
         if (error instanceof AxiosError) {
-          alert(error.response?.data.message);
+          setState(true);
           console.log(error);
         } else {
           alert("undefined error. check console log");
@@ -35,7 +45,10 @@ const useAuth = () => {
       });
   };
 
-  const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSignup = async (
+    e: FormEvent<HTMLFormElement>,
+    setState: Dispatch<SetStateAction<boolean>>
+  ) => {
     e.preventDefault();
     fetchSignUp({
       email: inputEmail.value,
@@ -46,7 +59,7 @@ const useAuth = () => {
       })
       .catch((error) => {
         if (error instanceof AxiosError) {
-          alert(error.response?.data.message);
+          setState(true);
         } else {
           alert("undefined error. check console log");
           console.log(error);

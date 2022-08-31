@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Input from "../common/Input";
 import styled from "styled-components";
 import useAuth from "../../hooks/useAuth";
+import useToast from "../../hooks/useToast";
+import Toast from "../common/Toast";
 
 const Login = () => {
   const {
@@ -11,10 +14,14 @@ const Login = () => {
     handleLogin,
   } = useAuth();
 
+  const [state, setState] = useState(false);
+  useToast({ state, setState });
+
   return (
     <>
+      {state && <Toast message="회원 정보가 일치하지 않습니다." />}
       <h2>Login</h2>
-      <form name="login" onSubmit={handleLogin}>
+      <form name="login" onSubmit={(e) => handleLogin(e, setState)}>
         <S.Input
           type="email"
           {...inputEmail}
