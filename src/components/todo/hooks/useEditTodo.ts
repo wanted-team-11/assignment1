@@ -9,6 +9,9 @@ const useEditTodo = ({ todos, setTodos }: TodoContextProps) => {
   const { openModal } = useModalContext();
 
   const handleEdit = (newTodo: Todo) => {
+    const targetTodo = todos.filter((todo) => todo.id === newTodo.id);
+    setTodos(todos.map((todo) => (todo.id === newTodo.id ? newTodo : todo)));
+
     fetchUpdateTodo(newTodo)
       .then(() => {
         setTodos(
@@ -17,6 +20,9 @@ const useEditTodo = ({ todos, setTodos }: TodoContextProps) => {
       })
       .catch((error) => {
         openModal("수정에 실패했습니다.");
+        setTodos(
+          todos.map((todo) => (todo.id === newTodo.id ? targetTodo[0] : todo))
+        );
       });
   };
 
