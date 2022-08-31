@@ -18,7 +18,7 @@ const TodoContainer = () => {
     fetchGetTodos()
       .then((response) => {
         setTodos(response.data);
-        // throw Error(); 에러 테스팅
+        throw Error(); //에러 테스팅
       })
       .catch(() => {
         setIsError(true);

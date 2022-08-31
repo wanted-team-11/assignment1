@@ -7,7 +7,7 @@ type ModalProps = {
 
 const Modal = ({ onClose, content }: ModalProps) => {
   return (
-    <Background>
+    <Background onClick={onClose}>
       <Content>{content}</Content>
     </Background>
   );
@@ -16,22 +16,25 @@ const Modal = ({ onClose, content }: ModalProps) => {
 export default Modal;
 
 const Background = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;
+  width: 100vw;
   position: fixed;
-  left: 0;
+
   top: 0;
-  text-align: center;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
 `;
 
 const Content = styled.div`
-  height: 100%;
-  width: 950px;
-  margin-top: 70px;
+  width: 500px;
+  height: 300px;
+  background-color: white;
   position: relative;
-  overflow: scroll;
-  background: #141414;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
