@@ -1,9 +1,9 @@
-import Login from '../../components/auth/Login';
-import { Link } from 'react-router-dom';
-import PATH from '../../router/routerPath';
-import CenterContainer from '../../components/layout/CenterContainer';
-import styled from 'styled-components';
-import Header from '../../components/layout/Header';
+import Login from "../../components/auth/Login";
+import { Link } from "react-router-dom";
+import PATH from "../../router/routerPath";
+import CenterContainer from "../../components/layout/CenterContainer";
+import styled from "styled-components";
+import Header from "../../components/layout/Header";
 
 const LoginPage = () => {
   return (

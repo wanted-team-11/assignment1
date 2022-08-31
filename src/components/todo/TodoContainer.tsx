@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { TodoProvider } from '../../context/useTodoContext';
-import { fetchGetTodos } from '../../services/api/todoAPI';
-import { Todo } from '../../services/model/todo';
-import TodoInput from './TodoInput';
-import TodoItem from './TodoItem';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import { TodoProvider } from "../../context/useTodoContext";
+import { fetchGetTodos } from "../../services/api/todoAPI";
+import { Todo } from "../../services/model/todo";
+import TodoInput from "./TodoInput";
+import TodoItem from "./TodoItem";
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState<Todo[]>([]);

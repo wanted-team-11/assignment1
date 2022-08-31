@@ -1,9 +1,9 @@
-import { FormEvent, useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
-import { useTodoContext } from '../../context/useTodoContext';
-import { Todo } from '../../services/model/todo';
-import { BlueButton, RedButton } from '../common/Button';
-import useTodo from './hooks/useTodo';
+import { FormEvent, useEffect, useState } from "react";
+import styled, { css } from "styled-components";
+import { useTodoContext } from "../../context/useTodoContext";
+import { Todo } from "../../services/model/todo";
+import { BlueButton, RedButton } from "../common/Button";
+import useTodo from "./hooks/useTodo";
 
 const TodoItem = (item: Todo) => {
   const { todo, isCompleted, id } = item;

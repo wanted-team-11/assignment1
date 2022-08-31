@@ -1,6 +1,6 @@
-import storage from '../utils/storage';
-import { Navigate, Outlet } from 'react-router-dom';
-import path from './routerPath';
+import storage from "../utils/storage";
+import { Navigate, Outlet } from "react-router-dom";
+import path from "./routerPath";
 
 /* 
   인증된 사용자가 접근하면 todo 페이지로 리다이렉션
@@ -8,7 +8,7 @@ import path from './routerPath';
 */
 
 const NotAuthRoute = () => {
-  return storage.get('TOKEN') ? <Navigate to={path.TODO} /> : <Outlet />;
+  return storage.get("TOKEN") ? <Navigate to={path.TODO} /> : <Outlet />;
 };
 
 export default NotAuthRoute;
