@@ -13,17 +13,17 @@ export const RedButton = styled(Button)`
 `;
 
 export const BlueButton = styled(Button)`
-${({ isReversal }) =>
-  !isReversal
-    ? css`
-        background-color: #1976d2;
-        color: #ffffff;
-      `
-    : css`
-        border: 1px solid #1976d2;
-        background-color: #ffffff;
-        color: #1976d2;
-      `}}
+  ${({ isReversal }) =>
+    !isReversal
+      ? css`
+          background-color: #1976d2;
+          color: #ffffff;
+        `
+      : css`
+          border: 1px solid #1976d2;
+          background-color: #ffffff;
+          color: #1976d2;
+        `}
 `;
 
 export const GreenButton = styled(Button)`

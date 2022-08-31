@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, useRef } from "react";
 
-const useInput = (initailValue: string) => {
-  const [value, setValue] = useState(initailValue);
+const useSaveValueInput = (initialValue: string) => {
+  const [value, setValue] = useState(initialValue);
   const ref = useRef<HTMLInputElement>();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -13,4 +13,4 @@ const useInput = (initailValue: string) => {
   return { value, setValue, onChange, reset, ref };
 };
 
-export default useInput;
+export default useSaveValueInput;

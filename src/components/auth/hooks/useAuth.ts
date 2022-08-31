@@ -1,7 +1,6 @@
-import { AxiosError } from "axios";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useInput from "../../../hooks/useInput";
+import useSaveValueInput from "../../../hooks/useSaveValueInput";
 import PATH from "../../../router/routerPath";
 import { fetchLogin, fetchSignUp } from "../../../services/api/authAPI";
 
@@ -11,9 +10,9 @@ const useAuth = () => {
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidPasswordCheck, setIsValidPasswordCheck] = useState(true);
   const isFirstRender = useRef(true);
-  const inputEmail = useInput("");
-  const inputPassword = useInput("");
-  const inputPasswordCheck = useInput("");
+  const inputEmail = useSaveValueInput("");
+  const inputPassword = useSaveValueInput("");
+  const inputPasswordCheck = useSaveValueInput("");
 
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
