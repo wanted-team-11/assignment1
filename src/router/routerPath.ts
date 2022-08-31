@@ -1,8 +1,7 @@
 const LOGIN = `/`;
-const LOGOUT = `/logout`;
 const SIGNUP = `/signup`;
-const TODO = "/todo";
+const TODO = '/todo';
 
-const PATH = { LOGIN, LOGOUT, SIGNUP, TODO };
+const PATH = { LOGIN, SIGNUP, TODO };
 
 export default PATH;

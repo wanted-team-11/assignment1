@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import path from "../../router/routerPath";
-import storage from "../../utils/storage";
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import path from '../../router/routerPath';
+import storage from '../../utils/storage';
+import { Button } from '../common/Button';
 
 const Header = () => {
-  const isLogined = storage.get("TOKEN") ? true : false;
+  const navigate = useNavigate();
+  const isLogined = storage.get('TOKEN') ? true : false;
+  const onClickLogout = () => {
+    storage.remove('TOKEN');
+    navigate(path.LOGIN);
+  };
 
   return (
     <S.Container>
@@ -13,7 +19,7 @@ const Header = () => {
           <S.Title>Todo App</S.Title>
           <span>원티드 프리온보딩 프론트엔드 선발과제</span>
         </div>
-        {isLogined ? <Link to={path.LOGOUT}>Logout</Link> : null}
+        {isLogined ? <Button onClick={onClickLogout}>logout</Button> : null}
       </S.Wrapper>
     </S.Container>
   );
