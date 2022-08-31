@@ -1,14 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import path from "../../router/routerPath";
-import storage from "../../utils/storage";
-import { Button } from "../common/Button";
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import path from '../../router/routerPath';
+import storage from '../../utils/storage';
+import { Button } from '../common/Button';
 
 const Header = () => {
   const navigate = useNavigate();
-  const isLogined = storage.get("TOKEN") ? true : false;
+  const isLogined = storage.get('TOKEN') ? true : false;
   const onClickLogout = () => {
-    storage.remove("TOKEN");
+    storage.remove('TOKEN');
     navigate(path.LOGIN);
   };
 

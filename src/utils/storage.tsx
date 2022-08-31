@@ -1,4 +1,4 @@
-export type StorageKey = "TOKEN";
+export type StorageKey = 'TOKEN';
 
 const storage = {
   get: (key: StorageKey) => localStorage.getItem(key),

@@ -5,4 +5,4 @@ export interface Todo {
   userId: number;
 }
 
-export type TodoInput = Pick<Todo, "todo">;
+export type TodoInput = Pick<Todo, 'todo'>;

@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useRef } from "react";
+import { useState, ChangeEvent, useRef } from 'react';
 
 const useInput = (initailValue: string) => {
   const [value, setValue] = useState(initailValue);
@@ -8,7 +8,7 @@ const useInput = (initailValue: string) => {
     setValue(e.target.value);
   };
 
-  const reset = () => setValue("");
+  const reset = () => setValue('');
 
   return { value, setValue, onChange, reset, ref };
 };
