@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, forwardRef } from "react";
 import styled from "styled-components";
 
 interface inputType {
@@ -15,7 +15,7 @@ interface inputType {
   className?: string;
 }
 
-const Input = (inputProps: inputType) => {
+const Input = forwardRef<HTMLInputElement, inputType>((inputProps, ref) => {
   const {
     id = inputProps.type,
     placeholder = inputProps.type,
@@ -31,14 +31,14 @@ const Input = (inputProps: inputType) => {
       {inputProps.textarea ? (
         <S.Textarea id={id} placeholder={placeholder} {...props} />
       ) : (
-        <S.Input id={id} placeholder={placeholder} {...props} />
+        <S.Input id={id} placeholder={placeholder} ref={ref} {...props} />
       )}
       <S.InvalidInputNotice isValid={isValid}>
         {invalidMessage}
       </S.InvalidInputNotice>
     </div>
   );
-};
+});
 
 export default Input;
 
