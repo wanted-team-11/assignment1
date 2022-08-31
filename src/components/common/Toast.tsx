@@ -1,11 +1,21 @@
-import React from "react";
+import { useEffect, Dispatch, SetStateAction } from "react";
 import styled, { keyframes } from "styled-components";
 
 interface toastType {
   message: string;
+  state: boolean;
+  setState: Dispatch<SetStateAction<boolean>>;
 }
 
-const Toast = ({ message }: toastType) => {
+const Toast = ({ message, state, setState }: toastType) => {
+  useEffect(() => {
+    if (state) {
+      setTimeout(() => {
+        setState(false);
+      }, 1500);
+    }
+  }, [state, setState]);
+
   return (
     <Background>
       <ToastBox>

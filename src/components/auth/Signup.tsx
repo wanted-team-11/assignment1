@@ -2,7 +2,6 @@ import { useState } from "react";
 import Input from "../common/Input";
 import styled from "styled-components";
 import useAuth from "../../hooks/useAuth";
-import useToast from "../../hooks/useToast";
 import Toast from "../common/Toast";
 
 const Signup = () => {
@@ -16,14 +15,19 @@ const Signup = () => {
     handleSignup,
   } = useAuth();
 
-  const [state, setState] = useState(false);
-  useToast({ state, setState });
+  const [isFailedSignup, setIsFailedSignup] = useState(false);
 
   return (
     <>
-      {state && <Toast message="회원 가입에 실패했습니다." />}
+      {isFailedSignup && (
+        <Toast
+          message="회원 가입에 실패했습니다."
+          state={isFailedSignup}
+          setState={setIsFailedSignup}
+        />
+      )}
       <h2>Sign Up</h2>
-      <form name="signup" onSubmit={(e) => handleSignup(e, setState)}>
+      <form name="signup" onSubmit={(e) => handleSignup(e, setIsFailedSignup)}>
         <S.Input
           type="email"
           {...inputEmail}

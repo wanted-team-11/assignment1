@@ -2,7 +2,6 @@ import { useState } from "react";
 import Input from "../common/Input";
 import styled from "styled-components";
 import useAuth from "../../hooks/useAuth";
-import useToast from "../../hooks/useToast";
 import Toast from "../common/Toast";
 
 const Login = () => {
@@ -14,14 +13,19 @@ const Login = () => {
     handleLogin,
   } = useAuth();
 
-  const [state, setState] = useState(false);
-  useToast({ state, setState });
+  const [isFailedLogin, setIsFailedLogin] = useState(false);
 
   return (
     <>
-      {state && <Toast message="회원 정보가 일치하지 않습니다." />}
+      {isFailedLogin && (
+        <Toast
+          message="회원 정보가 일치하지 않습니다."
+          state={isFailedLogin}
+          setState={setIsFailedLogin}
+        />
+      )}
       <h2>Login</h2>
-      <form name="login" onSubmit={(e) => handleLogin(e, setState)}>
+      <form name="login" onSubmit={(e) => handleLogin(e, setIsFailedLogin)}>
         <S.Input
           type="email"
           {...inputEmail}
