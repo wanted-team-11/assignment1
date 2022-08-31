@@ -1,8 +1,8 @@
-import { LoginPage, SignUpPage, NotFoundPage, TodoPage } from '../pages';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AuthRoute from './AuthRoute';
-import path from './routerPath';
-import NotAuthRoute from './NotAuthRoute';
+import { LoginPage, SignUpPage, NotFoundPage, TodoPage } from "../pages";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AuthRoute from "./AuthRoute";
+import path from "./routerPath";
+import NotAuthRoute from "./NotAuthRoute";
 
 const Router = () => (
   <>

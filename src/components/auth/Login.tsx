@@ -1,6 +1,6 @@
-import Input from "../common/Input";
-import styled from "styled-components";
-import useAuth from "./hooks/useAuth";
+import Input from '../common/Input';
+import styled from 'styled-components';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
   const {

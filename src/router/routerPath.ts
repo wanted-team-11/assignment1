@@ -1,6 +1,6 @@
 const LOGIN = `/`;
 const SIGNUP = `/signup`;
-const TODO = '/todo';
+const TODO = "/todo";
 
 const PATH = { LOGIN, SIGNUP, TODO };
 
