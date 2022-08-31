@@ -1,16 +1,16 @@
-import { FormEvent } from "react";
-import { TodoContextProps } from "../../../context/useTodoContext";
-import useInput from "../../../hooks/useInput";
+import { FormEvent } from 'react';
+import { TodoContextProps } from '../../../context/useTodoContext';
+import useInput from '../../../hooks/useInput';
 import {
   fetchCreateTodo,
   fetchDeleteTodo,
   fetchUpdateTodo,
-} from "../../../services/api/todoAPI";
-import { Todo } from "../../../services/model/todo";
+} from '../../../services/api/todoAPI';
+import { Todo } from '../../../services/model/todo';
 
 const useTodo = ({ todos, setTodos }: TodoContextProps) => {
-  const inputCreateTodo = useInput("");
-  const inputEditTodo = useInput("");
+  const inputCreateTodo = useInput('');
+  const inputEditTodo = useInput('');
 
   const handleCreate = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,6 +26,8 @@ const useTodo = ({ todos, setTodos }: TodoContextProps) => {
   };
 
   const handleEdit = (newTodo: Todo) => {
+    const targetTodo = todos.filter((todo) => todo.id === newTodo.id);
+    setTodos(todos.map((todo) => (todo.id === newTodo.id ? newTodo : todo)));
     fetchUpdateTodo(newTodo)
       .then(() => {
         setTodos(
@@ -34,6 +36,9 @@ const useTodo = ({ todos, setTodos }: TodoContextProps) => {
       })
       .catch((error) => {
         console.log(error);
+        setTodos(
+          todos.map((todo) => (todo.id === newTodo.id ? targetTodo[0] : todo))
+        );
       });
   };
 
@@ -41,7 +46,7 @@ const useTodo = ({ todos, setTodos }: TodoContextProps) => {
     inputEditTodo.setValue(selectedItem.todo);
   };
 
-  const handleDelete = (id: Todo["id"]) => {
+  const handleDelete = (id: Todo['id']) => {
     fetchDeleteTodo(id)
       .then(() => {
         setTodos(todos.filter((todo) => todo.id !== id));
