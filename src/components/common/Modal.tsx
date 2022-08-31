@@ -1,15 +1,17 @@
 import styled from "styled-components";
+import { useModalContext } from "../../context/useModalContext";
 
-type ModalProps = {
-  onClose: any;
-  content: any;
-};
+const Modal = () => {
+  const { isOpen, closeModal, content } = useModalContext();
 
-const Modal = ({ onClose, content }: ModalProps) => {
   return (
-    <Background onClick={onClose}>
-      <Content>{content}</Content>
-    </Background>
+    <>
+      {isOpen && (
+        <Background onClick={closeModal}>
+          <Content>{content}</Content>
+        </Background>
+      )}
+    </>
   );
 };
 

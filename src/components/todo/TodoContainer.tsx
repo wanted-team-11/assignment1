@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { TodoProvider } from "../../context/useTodoContext";
+import { useModalContext } from "../../context/useModalContext";
 import { fetchGetTodos } from "../../services/api/todoAPI";
 import { Todo } from "../../services/model/todo";
 import ModalPortal from "../../utils/Portal";
@@ -10,33 +11,25 @@ import TodoItem from "./TodoItem";
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [isError, setIsError] = useState(false);
-
-  const handleModal = () => setIsError(false);
+  const { openModal } = useModalContext();
 
   useEffect(() => {
     fetchGetTodos()
       .then((response) => {
         setTodos(response.data);
-        throw Error(); //에러 테스팅
       })
       .catch(() => {
-        setIsError(true);
+        openModal("할 일을 받아오지 못했습니다. 다시 시도해주세요.");
       });
   }, []);
 
   return (
     <>
       <ModalPortal>
-        {isError && (
-          <Modal
-            onClose={handleModal}
-            content="할 일을 받아오지 못했습니다. 다시 시도해주세요."
-          />
-        )}
+        <Modal />
       </ModalPortal>
+      <h2>Todo List</h2>
       <TodoProvider value={{ todos, setTodos }}>
-        <h2>Todo List</h2>
         <TodoInput />
         <S.ItemContainer>
           {todos.length === 0 ? (
