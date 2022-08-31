@@ -3,24 +3,26 @@ import styled, { css } from "styled-components";
 import { useTodoContext } from "../../context/useTodoContext";
 import { Todo } from "../../services/model/todo";
 import { BlueButton, RedButton } from "../common/Button";
-import useTodo from "./hooks/useTodo";
+import useDeleteTodo from "./hooks/useDeleteTodo";
+import useEditTodo from "./hooks/useEditTodo";
 
 const TodoItem = (item: Todo) => {
   const { todo, isCompleted, id } = item;
   const [isEditMode, setIsEditMode] = useState(false);
-  const { inputEditTodo, handleEdit, initEditMode, handleDelete } = useTodo(
+  const { inputProps, handleEdit, initEditMode } = useEditTodo(
     useTodoContext()
   );
+  const { handleDelete } = useDeleteTodo(useTodoContext());
 
   useEffect(() => {
-    inputEditTodo.ref.current?.focus();
-  }, [isEditMode, inputEditTodo]);
+    inputProps.ref.current?.focus();
+  }, [isEditMode, inputProps]);
   return (
     <>
       <S.Container
         onSubmit={(e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-          handleEdit({ ...item, todo: inputEditTodo.value });
+          handleEdit({ ...item, todo: inputProps.value });
           setIsEditMode(!isEditMode);
         }}
       >
@@ -55,7 +57,7 @@ const TodoItem = (item: Todo) => {
           </>
         ) : (
           <>
-            <S.EditInput {...inputEditTodo} />
+            <S.EditInput {...inputProps} />
             <BlueButton>확인</BlueButton>
             <BlueButton
               isReversal

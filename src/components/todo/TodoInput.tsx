@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { useTodoContext } from "../../context/useTodoContext";
 import { GreenButton } from "../common/Button";
-import useTodo from "./hooks/useTodo";
+import useCreateTodo from "./hooks/useCreateTodo";
 
 const TodoInput = () => {
-  const { inputCreateTodo, handleCreate } = useTodo(useTodoContext());
+  const { inputProps, handleCreate } = useCreateTodo(useTodoContext());
   return (
     <>
       <S.Form onSubmit={handleCreate}>
-        <S.InputBar {...inputCreateTodo} placeholder="할 일 입력" />
+        <S.InputBar {...inputProps} placeholder="할 일 입력" />
         <GreenButton>추가</GreenButton>
       </S.Form>
     </>

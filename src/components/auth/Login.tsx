@@ -1,15 +1,14 @@
 import Input from "../common/Input";
 import styled from "styled-components";
+
 import useAuth from "./hooks/useAuth";
+import useAuthInputs from "./hooks/useAuthInputs";
+import useValid from "./hooks/useValid";
 
 const Login = () => {
-  const {
-    isValidEmail,
-    isValidPassword,
-    inputEmail,
-    inputPassword,
-    handleLogin,
-  } = useAuth();
+  const inputProps = useAuthInputs();
+  const { isValidEmail, isValidPassword } = useValid({ ...inputProps });
+  const { handleLogin } = useAuth({ ...inputProps });
 
   return (
     <>
@@ -17,14 +16,14 @@ const Login = () => {
       <form name="login" onSubmit={handleLogin}>
         <S.Input
           type="email"
-          {...inputEmail}
+          {...inputProps.email}
           isValid={isValidEmail}
           invalidMessage="@를 포함한 이메일을 입력해주세요"
           required
         />
         <S.Input
           type="password"
-          {...inputPassword}
+          {...inputProps.password}
           isValid={isValidPassword}
           invalidMessage="8자 이상의 비밀번호를 입력해주세요"
           required
@@ -32,8 +31,8 @@ const Login = () => {
         <button
           type="submit"
           disabled={
-            !inputEmail.value ||
-            !inputPassword.value ||
+            !inputProps.email.value ||
+            !inputProps.password.value ||
             !isValidEmail ||
             !isValidPassword
           }
