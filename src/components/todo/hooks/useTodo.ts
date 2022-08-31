@@ -25,8 +25,8 @@ const useTodo = ({ todos, setTodos }: TodoContextProps) => {
       });
   };
 
-  const handleEdit = (newTodo: Todo) => {
-    fetchUpdateTodo(newTodo)
+  const handleEdit = async (newTodo: Todo) => {
+    await fetchUpdateTodo(newTodo)
       .then(() => {
         setTodos(
           todos.map((todo) => (todo.id === newTodo.id ? newTodo : todo))

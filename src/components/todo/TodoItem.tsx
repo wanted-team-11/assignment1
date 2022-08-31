@@ -21,7 +21,9 @@ const TodoItem = (item: Todo) => {
         onSubmit={(e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
           handleEdit({ ...item, todo: inputEditTodo.value });
-          setIsEditMode(!isEditMode);
+          setTimeout(() => {
+            setIsEditMode(!isEditMode);
+          }, 50);
         }}
       >
         <S.DoneCheckBox
