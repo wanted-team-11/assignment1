@@ -36,7 +36,7 @@ const TodoItem = (item: Todo) => {
             <S.Content isCompleted={isCompleted}>{todo}</S.Content>
             <BlueButton
               isReversal
-              onClick={(e) => {
+              onClick={(e: any) => {
                 e.preventDefault();
                 initEditMode(item);
                 setIsEditMode(!isEditMode);
@@ -59,7 +59,7 @@ const TodoItem = (item: Todo) => {
             <BlueButton>확인</BlueButton>
             <BlueButton
               isReversal
-              onClick={(e) => {
+              onClick={(e: any) => {
                 e.preventDefault();
                 setIsEditMode(!isEditMode);
               }}
