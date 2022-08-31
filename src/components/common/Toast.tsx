@@ -23,20 +23,23 @@ const Background = styled.div`
   width: 100vw;
   height: 100%;
 `;
+
 const fadeIn = keyframes`
 from {
-  opacity:0; }
-to{
-    opacity:1;
+  opacity: 0; 
+} to {
+  opacity: 1;
 }
 `;
+
 const fadeOut = keyframes`
 from {
-  opacity:1; }
-to{
-    opacity:0;
+  opacity: 1; 
+} to {
+  opacity: 0;
 }
 `;
+
 const ToastBox = styled.div`
   flex-direction: "row";
   position: absolute;
