@@ -11,7 +11,6 @@ const useEditTodo = ({ todos, setTodos }: TodoContextProps) => {
   const handleEdit = (newTodo: Todo) => {
     fetchUpdateTodo(newTodo)
       .then(() => {
-        throw Error("");
         setTodos(
           todos.map((todo) => (todo.id === newTodo.id ? newTodo : todo))
         );
