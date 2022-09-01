@@ -93,7 +93,7 @@ https://iron-herring-068.notion.site/1c9310febab84b48ac081d299e6aec1f?v=251a3027
 
 # 8. 배포주소
 https://assignment1-hp8iz60l2-wanted-team-11.vercel.app/ <br>
-- Test ID : admin1234@admin <br>
+- Test ID : admin1234@ad.min <br>
 - Test PW : admin1234
 
 
