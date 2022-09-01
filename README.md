@@ -84,6 +84,16 @@ src
 | docs     | Modify the document           |
 | chore    | etc.                          |
 
+<br>
+
 # 7. 회의기록
 https://iron-herring-068.notion.site/1c9310febab84b48ac081d299e6aec1f?v=251a302797184923842b4e7c79bf2c62
+
+<br>
+
+# 8. 배포주소
+https://assignment1-hp8iz60l2-wanted-team-11.vercel.app/ <br>
+- Test ID : admin1234@admin <br>
+- Test PW : admin1234
+
 
